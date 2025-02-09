@@ -5,7 +5,7 @@
 Install the dependencies:
 
 ```bash
-yarn install
+npm run install
 ```
 
 Set the environment variables:
@@ -21,31 +21,25 @@ cp .env.example .env
 Running locally:
 
 ```bash
-yarn dev
-```
-
-Kill locally:
-
-```bash
-yarn kill
+npm run dev
 ```
 
 Running in production:
 
 ```bash
-yarn start:dev
+npm run start
 ```
 
 Testing:
 
 ```bash
 # run all tests
-yarn test
+npm run test
 ```
 
 Build:
 
 ```bash
-yarn build
+npm run build
 ```
 
