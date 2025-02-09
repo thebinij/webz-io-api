@@ -1,14 +1,28 @@
-version: '3.4'
-
 services:
-  app:
-    image: app
-    build: .
+  db:
+    image: postgres:15
+    container_name: postgres_db
     environment:
-      NODE_ENV: development
+      POSTGRES_USER: ${DB_USER:-user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-strongPassword}
+      POSTGRES_DB: ${DB_NAME:-webhost_db}
     ports:
-      - 5000:5000
+      - "5432:5432"
+    restart: always 
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    command: yarn nodemon -q -L -w src src/main.ts
+      - postgres_data:/var/lib/postgresql/data
+  
+  # app:
+  #   image: app
+  #   build: .
+  #   environment:
+  #     NODE_ENV: development
+  #   ports:
+  #     - 5000:5000
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   command: yarn nodemon -q -L -w src src/main.ts
+  
+volumes:
+  postgres_data:

@@ -20,7 +20,9 @@
     "express": "4.21.2",
     "helmet": "8.0.0",
     "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
     "pm2": "^5.2.2",
+    "sequelize": "^6.37.5",
     "winston": "^3.17.0"
   },
   "devDependencies": {
