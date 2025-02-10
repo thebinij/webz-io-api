@@ -1,1 +1,1 @@
-export default {};
+export { DataIngestionController } from '@controllers/dataIngestion.controller';

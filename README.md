@@ -1,6 +1,6 @@
 # webz-io-api
 
-## Installation
+### 1. Installation
 
 Install the dependencies:
 
@@ -16,7 +16,7 @@ cp .env.example .env
 # open .env and modify the environment variables (if needed)
 ```
 
-## Commands
+### 2. Commands
 
 Running locally:
 
@@ -42,4 +42,3 @@ Build:
 ```bash
 npm run build
 ```
-

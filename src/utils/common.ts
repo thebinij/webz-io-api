@@ -1,0 +1,1 @@
+export const addWaitTime = (timeInMS: number) => new Promise((resolve) => setTimeout(resolve, timeInMS));
