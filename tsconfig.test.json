@@ -1,0 +1,22 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@lib/*": ["src/lib/*"],
+        "@utils/*": ["src/utils/*"],
+        "@types/*": ["src/types/*"],
+        "@routes/*": ["src/routes/*"],
+        "@services/*": ["src/services/*"],
+        "@models/*": ["src/models/*"],
+        "@controllers/*": ["src/controllers/*"],
+        "@middlewares/*": ["src/middlewares/*"],
+        "@interfaces/*": ["src/interfaces/*"],
+        "@errors/*": ["src/errors/*"],
+        "@config/*": ["src/config/*"]
+      },
+      "types": ["jest", "node"]
+    },
+    "include": ["src/**/*.ts", "tests/**/*.ts"],
+    "exclude": ["node_modules", "build"]
+  }
