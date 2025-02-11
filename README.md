@@ -62,7 +62,8 @@ npm run docker:dev
 │   │   ├── dataIngestion.controller.ts  # Controller for data ingestion logic
 │   │   └── index.ts                     # Main controller file
 │   ├── interfaces                          
-│   │   └── api.interface.ts             # API request/response types
+│   │   ├── api.interface.ts             # API request/response types
+│   │   └── db.interface.ts               # Database interface types
 │   ├── lib                                 
 │   │   ├── apiMethodBuilder.ts          # API method builder utility
 │   ├── main.ts                          # Main entry file for the app
@@ -70,6 +71,11 @@ npm run docker:dev
 │   │   ├── error.ts                     # Error handling middleware
 │   │   ├── index.ts                     # Main middleware exports
 │   │   └── winston.ts                   # Winston logger middleware
+│   ├── models
+│   │   └── postModel.ts                 # Post model definition
+│   ├── providers.ts                      
+│   ├── repositories
+│   │   └── dataIngestion.repository.ts  # Repository for data ingestion logic
 │   ├── routes                              
 │   │   └── index.ts                     # Main route file
 │   ├── services                              
@@ -80,7 +86,6 @@ npm run docker:dev
 │       ├── common.ts                    # Common utility functions
 │       ├── httpHandler.ts               # HTTP response utility
 │       └── index.ts                     # General utility exports
-
 ```
 
 ### 4. Documentation

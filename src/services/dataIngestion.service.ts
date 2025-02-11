@@ -1,9 +1,12 @@
 import { APIConfig } from "@interfaces/api.interface";
+import { IDataIngestionRepository } from "@interfaces/db.interface";
 import { RestApiBuilder } from "@lib/restApiBuilder";
-import { PostModel } from "@models/postModel";
 
 export class DataIngestionService {
-  constructor(private apiCaller: RestApiBuilder) {}
+  constructor(
+    private apiCaller: RestApiBuilder,
+    private dbService: IDataIngestionRepository
+  ) {}
 
   public async fetchData(config: APIConfig, payload: any) {
     const queryParams = payload.queryParams || {};
@@ -21,9 +24,9 @@ export class DataIngestionService {
 
   public async insertBatchData(batch: any) {
     try {
-     // bulkCreate inserts an array of objects in one call.
-    // The "ignoreDuplicates" option will skip any posts with an existing primary key (uuid).
-       await PostModel.bulkCreate(batch, { ignoreDuplicates: true });
+      // bulkCreate inserts an array of objects in one call.
+      // The "ignoreDuplicates" option will skip any posts with an existing primary key (uuid).
+      await this.dbService.insertBatchData(batch);
     } catch (error) {
       console.error("Error inserting data into database:", error);
       throw new Error("Database insert failed");
