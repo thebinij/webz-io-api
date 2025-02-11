@@ -14,11 +14,9 @@ The system will meet the following requirements:
 
 ### 3. System Architecture
 
-The architecture consists of three primary components:
+The architecture consists of two primary components:
 
-- **DataIngestionService**: The core component that manages the entire data ingestion process. This service is responsible for making requests to the data sources, processing the retrieved data, and storing the processed data in the database.
-  
-- **SourceClient**: A dynamic component for interacting with external data sources. This component handles all requests, including managing pagination, rate-limiting, and any specific source requirements based on the provided configuration.
+- **DataIngestionService**: The core component that manages the entire data ingestion process. This service is responsible for making requests to the data sources, processing the retrieved data, and storing the processed data in the database. The `DataIngestionService` communicates with the `RestApiBuilder` to interact with external data sources and retrieves the necessary data.
   
 - **PostgresClient**: This component is responsible for saving the processed data into the PostgreSQL database.
 
@@ -28,7 +26,7 @@ The components communicate with each other via well-defined interfaces, ensuring
 
 The data flow within the system is as follows:
 
-1. **Data Retrieval**: The `DataIngestionService` triggers the `SourceClient`, which is dynamically configured to interact with the appropriate data source(s). The `SourceClient` handles pagination, rate-limiting, and other specific source constraints, based on the configuration settings.
+1. **Data Retrieval**: The `DataIngestionService` triggers the API call via `RestApiBuilder` to interact with the appropriate data source(s). The `DataIngestionService` constructs query strings, headers, and request bodies based on the provided configuration and payload, then passes the request to `RestApiBuilder` to execute it.
   
 2. **Data Processing**: After the data is retrieved, the `DataIngestionService` processes the data to ensure it is in the required format for insertion into the database. This step includes any necessary transformations or filtering.
 
@@ -44,7 +42,7 @@ TODO: The data will be stored in a PostgreSQL database.
 
 The system will include the following mechanisms to handle errors:
 
-- **Rate Limiting**: The `SourceClient` will handle rate-limiting by respecting the constraints of the data source and implementing backoff strategies in case the limits are reached.
+- **Rate Limiting**: The `RestApiBuilder` will handle rate-limiting by respecting the constraints of the data source and implementing backoff strategies in case the limits are reached.
 - **Error Retries**: If a request fails (due to network issues or other transient errors), the system will automatically retry the request a predefined number of times. If the error persists, it will be logged for manual intervention.
 
 ### 7. Scalability and Performance

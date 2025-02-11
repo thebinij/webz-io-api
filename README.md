@@ -1,4 +1,4 @@
-# webz-io-api
+# data-ingestion-service (webz-io)
 
 ### 1. Installation
 
