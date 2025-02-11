@@ -14,7 +14,7 @@ export class DataIngestionService {
 
     config.endpointName = queryString
       ? `${config.endpointName}&${queryString}`
-      : `${config.endpointName}&q=Bitcoin`;
+      : `${config.endpointName}&q=Bitcoin&size=200`;
 
     const headers = this.apiCaller.generateRequestHeaders(config);
     const body = await this.apiCaller.generateRequestBody(config);
